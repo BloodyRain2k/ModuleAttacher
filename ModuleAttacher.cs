@@ -152,7 +152,8 @@ public class ModuleAttacher : MonoBehaviour
 			print(attachments.Count + " attachments loaded");
 		}
 		else {
-			KSP.IO.File.WriteAllText<ModuleAttacher>("CrewManifestModule:ModuleCommand[\"CrewCapacity\">\"0\"]\nTacFuelBalancer:ModuleCommand\n", file);
+			
+			KSP.IO.File.WriteAllText<ModuleAttacher>("TacFuelBalancer:ModuleCommand\n", file);
 		}
 	}
 	
