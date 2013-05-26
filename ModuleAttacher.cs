@@ -11,26 +11,26 @@ using System.Reflection;
 using System.Text;
 using UnityEngine;
 
-public class PartlessLoader : KSP.Testing.UnitTest
-{
-	public PartlessLoader() : base()
-	{
-		//Called at the first loading screen
-		//When you start the game.
-		MyPlugin.Initialize();
-	}
-}
-
-public static class MyPlugin
-{
-	private static UnityEngine.GameObject MyMonobehaviourObject;
-
-	public static void Initialize()
-	{
-		MyMonobehaviourObject = new UnityEngine.GameObject("ModuleAttacherLoader", new Type[] {typeof(ModuleAttacher)});
-		UnityEngine.GameObject.DontDestroyOnLoad(MyMonobehaviourObject);
-	}
-}
+//public class PartlessLoader : KSP.Testing.UnitTest
+//{
+//	public PartlessLoader() : base()
+//	{
+//		//Called at the first loading screen
+//		//When you start the game.
+//		MyPlugin.Initialize();
+//	}
+//}
+//
+//public static class MyPlugin
+//{
+//	private static UnityEngine.GameObject MyMonobehaviourObject;
+//
+//	public static void Initialize()
+//	{
+//		MyMonobehaviourObject = new UnityEngine.GameObject("ModuleAttacherLoader", new Type[] {typeof(ModuleAttacher)});
+//		UnityEngine.GameObject.DontDestroyOnLoad(MyMonobehaviourObject);
+//	}
+//}
 
 public class AttachmentRestriction
 {
@@ -117,7 +117,8 @@ public class Attachment
 	}
 }
 
-public class ModuleAttacher : UnityEngine.MonoBehaviour
+[KSPAddon(KSPAddon.Startup.Flight, false)]
+public class ModuleAttacher : MonoBehaviour
 {
 	private Vessel last;
 	private List<Attachment> attachments;
