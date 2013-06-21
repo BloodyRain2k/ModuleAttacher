@@ -136,7 +136,9 @@ public class ModuleAttacher : MonoBehaviour
 			{
 				string module = l.Substring(0, l.IndexOf(":"));
 				string target = l.Substring(l.IndexOf(":") + 1);
-				attachments.Add(new Attachment(module, target));
+				if (!l.StartsWith("//")) {
+					attachments.Add(new Attachment(module, target));
+				}
 //				string[] pcs = l.Split(':');
 //				if (pcs.Length >= 2)
 //				{
@@ -152,8 +154,7 @@ public class ModuleAttacher : MonoBehaviour
 			print(attachments.Count + " attachments loaded");
 		}
 		else {
-			
-			KSP.IO.File.WriteAllText<ModuleAttacher>("TacFuelBalancer:ModuleCommand\n", file);
+			KSP.IO.File.WriteAllText<ModuleAttacher>("//ModuleToAttach:ModuleToLookFor\n", file);
 		}
 	}
 	
